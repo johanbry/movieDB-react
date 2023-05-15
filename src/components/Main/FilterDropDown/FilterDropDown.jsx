@@ -1,8 +1,10 @@
 const FilterDropDown = () => {
   return (
-    <div>
-      <h1>FilterDropDown</h1>
-    </div>
+    <select>
+      <option value="popular">Popular</option>
+      <option value="top_rated">Top Rated</option>
+      <option value="uopcoming">Upcoming</option>
+    </select>
   );
 };
 

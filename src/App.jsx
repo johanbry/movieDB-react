@@ -4,12 +4,11 @@ import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
-    <>
-      <h1>MovieDB</h1>
+    <div>
       <Header />
       <Main />
       <Footer />
-    </>
+    </div>
   );
 };
 
