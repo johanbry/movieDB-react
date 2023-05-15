@@ -5,7 +5,9 @@ import "./header.css";
 const Header = () => {
   return (
     <header>
-      <h1>MovieDB</h1>
+      <h1>
+        Movie<span>DB</span>
+      </h1>
       <div>
         <NavLinks />
         <MyMovies />
