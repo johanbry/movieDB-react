@@ -5,3 +5,7 @@ header ul {
   gap: 1rem;
   text-transform: uppercase;
 }
+
+ul > li > .active {
+  font-weight: 700;
+}
