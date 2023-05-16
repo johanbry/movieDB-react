@@ -10,14 +10,6 @@ body {
   background-color: #000000;
   color: whitesmoke;
   font-family: "Roboto", sans-serif;
-  display: flex;
-  justify-content: center;
-}
-
-body > div {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 22px;
 }
 
 a {
