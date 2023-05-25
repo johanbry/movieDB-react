@@ -1,18 +1,11 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
 
-const FilterDropDown = ({ handleFilterChange }) => {
-  const [category, setCategory] = useState("popular");
-
-  // const handleChange = (selectedCategory) => {
-  //   setCategory(selectedCategory);
-  // };
-
-  useEffect(() => {
-    handleFilterChange(category);
-  }, [category, handleFilterChange]);
-
+const FilterDropDown = ({ filter, setFilter }) => {
   return (
-    <select onChange={(e) => setCategory(e.target.value)}>
+    <select
+      value={filter}
+      onChange={(e) => setFilter({ filter: e.target.value })}
+    >
       <option value="popular">Popular</option>
       <option value="top_rated">Top Rated</option>
       <option value="upcoming">Upcoming</option>
@@ -21,11 +14,3 @@ const FilterDropDown = ({ handleFilterChange }) => {
 };
 
 export default FilterDropDown;
-
-// printSelectedValue = () => {
-//   console.log(this.state.select);
-// }
-
-// select = (event) => {
-//   this.setState({ select: event.target.value }, this.printSelectedValue)
-// };

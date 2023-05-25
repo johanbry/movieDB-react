@@ -1,29 +1,31 @@
 import useFetch from "../../../hooks/useFetch";
-import { useState, useCallback } from "react";
+//import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import FilterDropDown from "../FilterDropDown/FilterDropDown";
 import MovieCard from "../MovieCard/MovieCard";
 import "./movielist.css";
 
 const MovieList = () => {
-  const defaultUrl =
+  //const [filter, setFilter] = useState("popular");
+  const [filter, setFilter] = useSearchParams({ filter: "popular" });
+
+  const url =
     import.meta.env.VITE_API_URL +
-    "popular?api_key=" +
+    filter.get("filter") +
+    "?api_key=" +
     import.meta.env.VITE_API_KEY;
 
-  const [url, setUrl] = useState(defaultUrl);
-
   const { data: movies, isLoading, errorMessage } = useFetch(url);
-  //console.log(movies, isLoading, errorMessage);
 
-  const handleFilterChange = useCallback((category) => {
-    console.log("handleFilter parent", category);
-    setUrl(
-      import.meta.env.VITE_API_URL +
-        category +
-        "?api_key=" +
-        import.meta.env.VITE_API_KEY
-    );
-  }, []);
+  /* useEffect(() => {
+  const fetchMovies = async () => {
+    const res = fetch(url);
+    const data = await res.json();
+    setMovies(data);
+  };
+  fetchMovies();
+}), []; */
+
   //(category) => {
 
   //};
@@ -31,7 +33,7 @@ const MovieList = () => {
   //api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
   return (
     <div>
-      <FilterDropDown handleFilterChange={handleFilterChange} />
+      <FilterDropDown filter={filter.get("filter")} setFilter={setFilter} />
       {isLoading && <p>Laddar...</p>}
       {errorMessage && <p>Något gick fel</p>}
       {/* <section>{movies && <MovieCard movies={movies} />}</section> */}
